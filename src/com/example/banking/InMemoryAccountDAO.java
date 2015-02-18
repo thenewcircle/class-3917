@@ -14,7 +14,7 @@ public class InMemoryAccountDAO implements AccountDAO {
 	private long nextId = 1;
 	private Map<Long,Account> database = new HashMap<>();
 
-	private InMemoryAccountDAO() {
+	public InMemoryAccountDAO() {
 	}
 	
 	@Override

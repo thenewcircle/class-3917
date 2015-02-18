@@ -4,7 +4,7 @@ public class SimpleBankingService implements BankingService {
 
 	@Override
 	public void transfer(long fromAccountId, long toAccountId, double amount) {
-		AccountDAO dao = InMemoryAccountDAO.getInstance();
+		AccountDAO dao = ConfigurationService.getAccountDAO();
 		Account from = dao.find(fromAccountId);
 		Account to = dao.find(toAccountId);
 		
