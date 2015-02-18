@@ -2,12 +2,6 @@ package com.example.banking;
 
 public class SimpleBankingService implements BankingService {
 
-	private AccountDAO dao = new InMemoryAccountDAO();
-	
-	public AccountDAO getDao() {
-		return dao;
-	}
-
 	@Override
 	public void transfer(long fromAccountId, long toAccountId, double amount) {
 		AccountDAO dao = new InMemoryAccountDAO();
