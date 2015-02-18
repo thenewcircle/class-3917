@@ -1,6 +1,7 @@
 package com.example.banking;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class BankingTest {
@@ -21,23 +22,25 @@ public class BankingTest {
 		double amount = 1_000_000_000.00;
 		
 		//3. Act (do the business logic)
-		teller.transfer(fromAccountId, toAccountId, amount);
+		teller.transfer(dao, fromAccountId, toAccountId, amount);
 		
 		//4. Verify the results
 		Account finalFrom = dao.find(fromAccountId);
 		Account finalTo = dao.find(toAccountId);
-		Assert.assertEquals(0.00, finalFrom.getBalance(), ERROR_TOL);
-		Assert.assertEquals(1_000_000_000.00, finalTo.getBalance(), ERROR_TOL);
+		Assert.assertEquals(1_000_000_000.00 - 1_000_000_000.00, finalFrom.getBalance(), ERROR_TOL);
+		Assert.assertEquals(1_000_000_000.00 + 5.00, finalTo.getBalance(), ERROR_TOL);
 		
 		//5. Cleanup
 	}
 	
 	@Test
+	@Ignore
 	public void testAccountIdIsNullIfNotInDatabase() {
 		Assert.fail("Test not written");
 	}
 	
 	@Test
+	@Ignore
 	public void testAccountNotFound() {
 		Assert.fail("Test not written.");
 	}

@@ -2,6 +2,7 @@ package com.example.banking;
 
 public interface BankingService {
 
-	void transfer(long fromAccountId, long toAccountId, double amount);
+	void transfer(AccountDAO dao, long fromAccountId, long toAccountId,
+			double amount);
 
 }
