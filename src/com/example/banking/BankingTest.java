@@ -1,8 +1,11 @@
 package com.example.banking;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class BankingTest {
+
+	private static final double ERROR_TOL = 0.00_001;
 
 	@Test
 	public void testTransfer() {
@@ -23,8 +26,8 @@ public class BankingTest {
 		//4. Verify the results
 		Account finalFrom = dao.find(fromAccountId);
 		Account finalTo = dao.find(toAccountId);
-		Assert.assertEquals(0.00, finalFrom.getBalance());
-		Assert.assertEquals(1_000_000_000.00, finalTo.getBalance());
+		Assert.assertEquals(0.00, finalFrom.getBalance(), ERROR_TOL);
+		Assert.assertEquals(1_000_000_000.00, finalTo.getBalance(), ERROR_TOL);
 		
 		//5. Cleanup
 	}
