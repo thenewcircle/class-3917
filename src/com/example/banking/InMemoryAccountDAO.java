@@ -5,8 +5,17 @@ import java.util.Map;
 
 public class InMemoryAccountDAO implements AccountDAO {
 
+	private static final AccountDAO instance = new InMemoryAccountDAO();
+
+	public static AccountDAO getInstance() {
+		return instance;
+	}
+
 	private long nextId = 1;
 	private Map<Long,Account> database = new HashMap<>();
+
+	private InMemoryAccountDAO() {
+	}
 	
 	@Override
 	public Account create(String owner, double balance) {

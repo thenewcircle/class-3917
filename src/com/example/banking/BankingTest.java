@@ -11,7 +11,7 @@ public class BankingTest {
 	@Test
 	public void testTransfer() {
 		//1. Setup (Assemble)
-		AccountDAO dao = new InMemoryAccountDAO();
+		AccountDAO dao = InMemoryAccountDAO.getInstance();
 		BankingService teller = new SimpleBankingService();
 		
 		//2. Create test data / test fixture
