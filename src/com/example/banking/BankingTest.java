@@ -4,22 +4,22 @@ import org.junit.Test;
 
 public class BankingTest {
 
-	/**
-	 * This won't yet compile.  Not all code is written.
-	 * 
-	 * Notice this code is a much better design....
-	 * + The user must do 1 function call to transfer money.
-	 * + Could be optimized to have only 1 database call
-	 * + Any transaction logic is hidden behind the scenes
-	 * + There no a security issue with "setBalance".
-	 */
 	@Test
 	public void testTransfer() {
+		//1. Setup (Assemble)
 		BankingService teller = new SimpleBankingService();
+		
+		//2. Create test data / test fixture
 		long fromAccountId = 1;
 		long toAccountId = 2;
 		double amount = 1_000_000_000.00;
+		
+		//3. Act (do the business logic)
 		teller.transfer(fromAccountId, toAccountId, amount);
+		
+		//4. Verify the results
+		
+		//5. Cleanup
 	}
 	
 }
