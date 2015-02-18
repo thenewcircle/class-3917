@@ -32,4 +32,11 @@ public class BankingTest {
 		//5. Cleanup
 	}
 	
+	@Test
+	public void testAccountIdIsNullIfNotInDatabase() {
+		Assert.fail("Test not written");
+	}
+	
 }
+
+
