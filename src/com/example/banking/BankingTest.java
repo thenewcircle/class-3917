@@ -37,6 +37,11 @@ public class BankingTest {
 		Assert.fail("Test not written");
 	}
 	
+	@Test
+	public void testAccountNotFound() {
+		Assert.fail("Test not written.");
+	}
+	
 }
 
 
