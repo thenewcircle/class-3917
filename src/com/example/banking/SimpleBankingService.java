@@ -3,8 +3,8 @@ package com.example.banking;
 public class SimpleBankingService implements BankingService {
 
 	@Override
-	public void transfer(AccountDAO dao, long fromAccountId, long toAccountId, double amount) {
-//		AccountDAO dao = new InMemoryAccountDAO();
+	public void transfer(long fromAccountId, long toAccountId, double amount) {
+		AccountDAO dao = new InMemoryAccountDAO();
 		Account from = dao.find(fromAccountId);
 		Account to = dao.find(toAccountId);
 		

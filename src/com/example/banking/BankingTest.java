@@ -22,7 +22,7 @@ public class BankingTest {
 		double amount = 1_000_000_000.00;
 		
 		//3. Act (do the business logic)
-		teller.transfer(dao, fromAccountId, toAccountId, amount);
+		teller.transfer(fromAccountId, toAccountId, amount);
 		
 		//4. Verify the results
 		Account finalFrom = dao.find(fromAccountId);
