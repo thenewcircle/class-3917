@@ -7,21 +7,19 @@ public class BankingTest {
 	/**
 	 * This won't yet compile.  Not all code is written.
 	 * 
-	 * Notice this code is a bad design....
-	 * + The user must do 8 function calls just to transfer money.
-	 * + There are 4 database calls
-	 * + There is no database transaction.
-	 * + There is a security issue with "setBalance" and "saveAccount"
+	 * Notice this code is a much better design....
+	 * + The user must do 1 function call to transfer money.
+	 * + Could be optimized to have only 1 database call
+	 * + Any transaction logic is hidden behind the scenes
+	 * + There no a security issue with "setBalance".
 	 */
 	@Test
 	public void testTransfer() {
 		BankingService teller = new SimpleBankingService();
-		Account from = teller.find(1L);
-		Account to = teller.find(2L);
-		from.setBalance(from.getBalance() - 10.00);
-		to.setBalance(to.getBalance() + 10.00);
-		teller.update(from);
-		teller.update(to);
+		long fromAccountId = 1;
+		long toAccountId = 2;
+		double amount = 1_000_000_000.00;
+		teller.transfer(fromAccountId, toAccountId, amount);
 	}
 	
 }
