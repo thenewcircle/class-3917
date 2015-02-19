@@ -14,7 +14,7 @@ public class SimpleBankingService implements BankingService {
 			throw new IllegalArgumentException("Amount must be > 0, currently is " + amount);
 		}
 		
-		//AccountDAO dao = ConfigurationService.getAccountDAO();
+		AccountDAO dao = ConfigurationService.getAccountDAO();
 		Account from = dao.find(fromAccountId);
 		Account to = dao.find(toAccountId);
 		from.subtractFromBalance(amount);

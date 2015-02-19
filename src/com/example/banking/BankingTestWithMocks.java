@@ -1,14 +1,21 @@
 package com.example.banking;
 
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.mockito.Mockito;
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@RunWith(PowerMockRunner.class)
 public class BankingTestWithMocks {
 
 	private static final double ERROR_TOL = 0.00_001;
@@ -18,6 +25,7 @@ public class BankingTestWithMocks {
 //		ConfigurationService.reset();
 //	}
 	
+	@PrepareForTest(ConfigurationService.class)
 	@Test
 	public void testTransfer() throws Exception {
 		//1. Create test data / test fixture
@@ -32,6 +40,9 @@ public class BankingTestWithMocks {
 		BankingService teller = new SimpleBankingService(dao);
 		when(dao.find(fromAccountId)).thenReturn(from);
 		when(dao.find(toAccountId)).thenReturn(to);
+		PowerMockito.mockStatic(ConfigurationService.class);
+		Mockito.when(ConfigurationService.getAccountDAO()).thenReturn(dao);
+		Mockito.when(ConfigurationService.getBankingService()).thenReturn(teller);
 		
 		//3. Act (do the business logic)
 		teller.transfer(fromAccountId, toAccountId, amount);
