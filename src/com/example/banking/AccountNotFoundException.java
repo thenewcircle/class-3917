@@ -7,7 +7,7 @@ public class AccountNotFoundException extends Exception {
 	
 	
 	public AccountNotFoundException(Long accountId) {
-		super("Account #1 was not found");
+		super(String.format("Account #%d was not found", accountId));
 		this.accountId = accountId;
 	}
 
