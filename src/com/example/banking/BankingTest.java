@@ -76,6 +76,36 @@ public class BankingTest {
 	}
 	
 	@Test
+	public void testTransferNegativeBalance() throws Exception {
+		//1. Setup (Assemble)
+		AccountDAO dao = new InMemoryAccountDAO();
+		BankingService teller = new SimpleBankingService(dao);
+		
+		//2. Create test data / test fixture
+		Account from = dao.create("Val 401k", 1_000_000_000.00);
+		Account to = dao.create("Doug 401k", 5.00);
+		Long fromAccountId = from.getId();
+		Long toAccountId = to.getId();
+		double amount = -100.00;
+		
+		//3. Act (do the business logic)
+		try {
+			teller.transfer(fromAccountId, toAccountId, amount);
+			Assert.fail("Should throw InsufficientBalanceException");
+		} catch (IllegalArgumentException e) {
+			//Pass
+		}
+			
+		//4. Verify the results
+		Account finalFrom = dao.find(fromAccountId);
+		Account finalTo = dao.find(toAccountId);
+		Assert.assertEquals(1_000_000_000.00, finalFrom.getBalance(), ERROR_TOL);
+		Assert.assertEquals(5.00, finalTo.getBalance(), ERROR_TOL);
+		
+		//5. Cleanup
+	}
+	
+	@Test
 	public void testAccountToString() {
 		Account a = new Account(1L, "Val 401k", 1_000_000_000.00);
 		String expected = "Account[id=1, owner=\"Val 401k\", balance=$1000000000.00]";
