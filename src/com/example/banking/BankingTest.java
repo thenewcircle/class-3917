@@ -1,9 +1,7 @@
 package com.example.banking;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
@@ -124,6 +122,7 @@ public class BankingTest {
 	public void testZFindAccountNotFound() {
 		try {
 			AccountDAO dao = new InMemoryAccountDAO();
+			@SuppressWarnings("unused")
 			Account account = dao.find(1L);
 			Assert.fail("Expected exception");
 		} catch (AccountNotFoundException ex) {
@@ -133,6 +132,7 @@ public class BankingTest {
 
 		try {
 			AccountDAO dao = new InMemoryAccountDAO();
+			@SuppressWarnings("unused")
 			Account account = dao.find(2L);
 			Assert.fail("Expected exception");
 		} catch (AccountNotFoundException ex) {
