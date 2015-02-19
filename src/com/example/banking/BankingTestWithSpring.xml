@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    ">
+
+	<bean id="database" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="username" value="scott"/>
+		<property name="password" value="tiger"/>
+		<property name="url" value="jdbc:oracle:thin://hostname:1521/sid"/>
+	</bean>
+	<bean id="accountDAO" class="com.example.banking.InMemoryAccountDAO">
+<!-- 		<constructor-arg ref="database"/> -->
+	</bean>
+	<bean id="bankingService" class="com.example.banking.SimpleBankingService">
+		<constructor-arg ref="accountDAO"/>
+	</bean>
+	
+
+</beans>
