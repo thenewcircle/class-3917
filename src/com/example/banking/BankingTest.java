@@ -55,7 +55,17 @@ public class BankingTest {
 			Account account = dao.find(1L);
 			Assert.fail("Expected exception");
 		} catch (AccountNotFoundException ex) {
-			// Assert.assertEquals(Long.valueOf(1), ex.getAccountId());
+			Assert.assertEquals(Long.valueOf(1), ex.getAccountId());
+			Assert.assertEquals("Account #1 was not found", ex.getMessage());
+		}
+
+		try {
+			AccountDAO dao = new InMemoryAccountDAO();
+			Account account = dao.find(2L);
+			Assert.fail("Expected exception");
+		} catch (AccountNotFoundException ex) {
+			Assert.assertEquals(Long.valueOf(2), ex.getAccountId());
+			Assert.assertEquals("Account #2 was not found", ex.getMessage());
 		}
 	}
 	
