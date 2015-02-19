@@ -39,6 +39,8 @@ public class BankingTestWithMocks {
 		Account finalTo = dao.find(toAccountId);
 		Assert.assertEquals(1_000.00 - 1_000.00, finalFrom.getBalance(), ERROR_TOL);
 		Assert.assertEquals(1_000.00 + 5.00, finalTo.getBalance(), ERROR_TOL);
+		Mockito.verify(dao).update(from);
+		Mockito.verify(dao).update(to);
 		
 		//5. Cleanup
 	}
