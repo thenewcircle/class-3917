@@ -5,6 +5,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.mockito.Mockito;
+import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BankingTestWithMocks {
@@ -28,8 +30,8 @@ public class BankingTestWithMocks {
 		//2. Setup (Assemble)
 		AccountDAO dao = Mockito.mock(AccountDAO.class);
 		BankingService teller = new SimpleBankingService(dao);
-		Mockito.when(dao.find(fromAccountId)).thenReturn(from);
-		Mockito.when(dao.find(toAccountId)).thenReturn(to);
+		when(dao.find(fromAccountId)).thenReturn(from);
+		when(dao.find(toAccountId)).thenReturn(to);
 		
 		//3. Act (do the business logic)
 		teller.transfer(fromAccountId, toAccountId, amount);
@@ -37,10 +39,10 @@ public class BankingTestWithMocks {
 		//4. Verify the results
 		Account finalFrom = dao.find(fromAccountId);
 		Account finalTo = dao.find(toAccountId);
-		Assert.assertEquals(1_000.00 - 1_000.00, finalFrom.getBalance(), ERROR_TOL);
-		Assert.assertEquals(1_000.00 + 5.00, finalTo.getBalance(), ERROR_TOL);
-		Mockito.verify(dao).update(from);
-		Mockito.verify(dao).update(to);
+		assertEquals(1_000.00 - 1_000.00, finalFrom.getBalance(), ERROR_TOL);
+		assertEquals(1_000.00 + 5.00, finalTo.getBalance(), ERROR_TOL);
+		verify(dao).update(from);
+		verify(dao).update(to);
 		
 		//5. Cleanup
 	}
