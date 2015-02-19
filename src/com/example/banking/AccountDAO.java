@@ -11,7 +11,7 @@ public interface AccountDAO {
 	/**
 	 * Retreives the account from the database with the given primary key.
 	 */
-	Account find(long id);
+	Account find(long id) throws AccountNotFoundException;
 
 	/**
 	 * Saves the account changes to the database. If it's a new account, it will

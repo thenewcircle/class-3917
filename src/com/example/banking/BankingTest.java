@@ -18,7 +18,7 @@ public class BankingTest {
 //	}
 	
 	@Test
-	public void testTransfer() {
+	public void testTransfer() throws AccountNotFoundException {
 		//1. Setup (Assemble)
 		AccountDAO dao = new InMemoryAccountDAO();
 		BankingService teller = new SimpleBankingService(dao);
@@ -43,16 +43,20 @@ public class BankingTest {
 	}
 	
 	@Test
-	@Ignore
 	public void testAccountIdIsNullIfNotInDatabase() {
-		Assert.fail("Test not written");
+		Account account = new Account();
+		Assert.assertNull(account.getId());
 	}
 	
 	@Test
 	public void testZFindAccountNotFound() {
-		AccountDAO dao = new InMemoryAccountDAO();
-		Account account = dao.find(1L);
-		Assert.assertNull(account);
+		try {
+			AccountDAO dao = new InMemoryAccountDAO();
+			Account account = dao.find(1L);
+			Assert.fail("Expected exception");
+		} catch (AccountNotFoundException ex) {
+			// Assert.assertEquals(Long.valueOf(1), ex.getAccountId());
+		}
 	}
 	
 }
