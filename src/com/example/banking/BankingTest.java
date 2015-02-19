@@ -12,16 +12,16 @@ public class BankingTest {
 
 	private static final double ERROR_TOL = 0.00_001;
 
-	@Before
-	public void resetConfiguration() {
-		ConfigurationService.reset();
-	}
+//	@Before
+//	public void resetConfiguration() {
+//		ConfigurationService.reset();
+//	}
 	
 	@Test
 	public void testTransfer() {
 		//1. Setup (Assemble)
-		AccountDAO dao = ConfigurationService.getAccountDAO();
-		BankingService teller = ConfigurationService.getBankingService();
+		AccountDAO dao = new InMemoryAccountDAO();
+		BankingService teller = new SimpleBankingService(dao);
 		
 		//2. Create test data / test fixture
 		Account from = dao.create("Val 401k", 1_000_000_000.00);
@@ -50,7 +50,7 @@ public class BankingTest {
 	
 	@Test
 	public void testZFindAccountNotFound() {
-		AccountDAO dao = ConfigurationService.getAccountDAO();
+		AccountDAO dao = new InMemoryAccountDAO();
 		Account account = dao.find(1L);
 		Assert.assertNull(account);
 	}
