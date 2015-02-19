@@ -82,8 +82,8 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [id=" + id + ", owner=" + owner + ", balance="
-				+ balance + "]";
+		String result = String.format("Account[id=%d, owner=\"%s\", balance=$%.2f]", id, owner, balance);
+		return result;
 	}
 
 }

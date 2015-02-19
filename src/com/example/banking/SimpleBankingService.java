@@ -9,12 +9,15 @@ public class SimpleBankingService implements BankingService {
 	}
 	
 	@Override
-	public void transfer(long fromAccountId, long toAccountId, double amount) throws AccountNotFoundException {
+	public void transfer(long fromAccountId, long toAccountId, double amount) throws AccountNotFoundException, InsufficientBalanceException {
 		//AccountDAO dao = ConfigurationService.getAccountDAO();
 		Account from = dao.find(fromAccountId);
 		Account to = dao.find(toAccountId);
 		
 		double fromBal = from.getBalance();
+		if (amount > fromBal) {
+			throw new InsufficientBalanceException(from, amount);
+		}
 		fromBal -= amount;
 		from.setBalance(fromBal);
 		
