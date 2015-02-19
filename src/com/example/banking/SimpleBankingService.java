@@ -17,20 +17,10 @@ public class SimpleBankingService implements BankingService {
 		//AccountDAO dao = ConfigurationService.getAccountDAO();
 		Account from = dao.find(fromAccountId);
 		Account to = dao.find(toAccountId);
-		
-		double fromBal = from.getBalance();
-		if (amount > fromBal) {
-			throw new InsufficientBalanceException(from, amount);
-		}
-		fromBal -= amount;
-		from.setBalance(fromBal);
-		
-		double toBal = to.getBalance();
-		toBal += amount;
-		to.setBalance(toBal);
-		
+		from.subtractFromBalance(amount);
+		to.addToBalance(amount);
 		dao.update(from);
 		dao.update(to);
 	}
-
+	
 }

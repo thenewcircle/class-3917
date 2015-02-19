@@ -86,4 +86,20 @@ public class Account {
 		return result;
 	}
 
+	public void subtractFromBalance(double amount)
+			throws InsufficientBalanceException {
+		double fromBal = getBalance();
+		if (amount > fromBal) {
+			throw new InsufficientBalanceException(this, amount);
+		}
+		fromBal -= amount;
+		setBalance(fromBal);
+	}
+
+	public void addToBalance(double amount) {
+		double toBal = getBalance();
+		toBal += amount;
+		setBalance(toBal);
+	}
+
 }
