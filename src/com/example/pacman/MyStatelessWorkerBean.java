@@ -2,13 +2,17 @@ package com.example.pacman;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
+
+@Stateless
 public class MyStatelessWorkerBean {
 
 	public void doWork(RequestMessage request) {
-		MyValidator validator = new MyValidator();
+		ConfigurationService config = ConfigurationService.getInstance();
+		MyValidator validator = config.getMyValidator();
 		List<ValidationError> errors = validator.validate(request);
 		request.setErrors(errors);
-		DistributionEngine de = new DistributionEngine();
+		DistributionEngine de = config.getDistributionEngine();
 		de.buildMessages(request);
 	}
 

@@ -4,7 +4,12 @@ import javax.sql.DataSource;
 
 public class CustomerService {
 
-	private DataSource ds = JndiHelper.jndiLookup("/jdbc/regionalDS", DataSource.class);
+	private DataSource dataSource;
+
+	/** Injects the datasource */
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
 	
 	public Object findCustomer() {
 		return null;
