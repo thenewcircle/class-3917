@@ -1,0 +1,12 @@
+You will need the following:
+
++ Java SE Development Kit (JDK) 7.
+http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
+
++ Eclipse IDE for JavaEE Developers (latest version is Eclipse 4.4.1 Luna SR1). 
+Note: Don't get the Java version.. you want the JavaEE version.
+http://eclipse.org/downloads/ 
+
++ Download (but don't unzip) the following file and have it available on your hard drive.
+https://newcircle.box.com/Java-Libraries
+

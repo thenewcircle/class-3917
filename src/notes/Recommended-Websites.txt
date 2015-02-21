@@ -1,0 +1,17 @@
+xUnit Patterns:
+http://xunitpatterns.com/
+
+JUnit Website:
+http://junit.org/
+
+JUnit JavaDoc:
+http://junit.sourceforge.net/javadoc/index.html
+
+
+More xUnit Patterns:
+http://xunitpatterns.com/
+http://xunitpatterns.com/Four%20Phase%20Test.html
+http://xunitpatterns.com/Hard%20to%20Test%20Code.html
+http://xunitpatterns.com/Extract%20Testable%20Component.html
+http://xunitpatterns.com/Tools.html
+

@@ -1,0 +1,44 @@
+Safari Books Line:
+www.safaribooksonline.com
+
+xUnit Test Patterns: Refactoring Test Code
+  by Gerard Meszaros
+http://xunitpatterns.com/
+http://www.amazon.com/xUnit-Test-Patterns-Refactoring-Code/dp/0131495054
+http://www.wangyuxiong.com/wp-content/uploads/downloads/2013/02/xUnit-Test-Patterns.pdf
+
+Refactoring: Improving the Design of Existing Code
+  by Martin Fowler, et al
+http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672/
+
+JUnit Recipes
+  by J B Rainsberger
+http://www.amazon.com/JUnit-Recipes-Practical-Methods-Programmer/dp/1932394230/
+
+Working Effectively with Legacy Code
+  by Michael Feathers
+http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052
+
+Clean Code: A Handbook of Agile Software Craftsmanship
+  by Robert C. Martin
+http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882/
+
+Test Driven Development: By Example
+  by Kent Beck
+http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530/
+
+Next Generation Java Testing: TestNG and Advanced Concepts
+  by Hani Suleiman, Cedric Beust
+http://www.amazon.com/Next-Generation-Java-Testing-Advanced-ebook/dp/B0013TOXIW/
+
+Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development (3rd Edition)
+  by Craig Larman
+http://www.amazon.com/Applying-UML-Patterns-Introduction-Object-Oriented/dp/0131489062/
+
+The Rational Unified Process Made Easy 
+  by Per Kroll, Philippe Kruchten, Grady Booch
+http://www.amazon.com/Rational-Unified-Process-Made-Easy-ebook/dp/B001SV1MMK/
+
+Agile and Iterative Development: A Manager's Guide
+  by Craig Larman
+http://www.amazon.com/Agile-Iterative-Development-Managers-Guide/dp/0131111558/

@@ -1,0 +1,37 @@
+Test Driven Development
+- What have you already been told about Test Driven Development
+- Why developers tend to not write tests
+- Why developers love writing tests (It's not just about finding bugs)
+- The Test Driven Development Lifecycle
+  - New Features
+  - Fixing Bugs
+  - Making Design Changes (Refactoring)
+- Exercise: Reducing code-complete time by writing tests first
+- Striking a balance between testing and coding and finding synergy.
+- Best Practices for test driven development
+
+Testing, Design, and Testing Patterns
+- Design for testability
+- Validating design through testing
+- Rule of Three
+- Dependency Injection
+- Mock Objects
+- Test Stubs
+- Test Fixtures
+
+Testing hard to test code
+- Technical Debt
+- Refactoring
+- Testability Antipatterns:
+  - Static Variables and Mutable Global State
+  - Large Functions
+  - Highly Coupled Modules
+- JUnit Features
+
+Optional
+- PowerMock
+- Other Testing Frameworks (TestNG)
+- Other Mocking Frameworks (Mockito)
+- Performance Testing
+- GUI Testing (FEST)
+- Testing with the Spring Framework
