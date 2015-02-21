@@ -1,0 +1,86 @@
++ TDD: Start by making 1 test that fails, then make it pass.
+    Constant back and forth between writing tests and coding.
+
++ Test gives big return on investment when...
+  - When making a new feature...
+    Write *one* test first, to clarify requrements and design.
+  - When fixing a bug
+    . Reproduce the bug as automated test (bypass the UI layer)
+      [We don't need to run Jetty, We don't need to use a web browser]
+    . Verify the test fails when behavior is not correct.
+    . Find and Fix the bug.
+    . Verify the test runs successfully.
+    . Do any code cleanup
+    . Rerun the test again.
+  - Refactoring existing code
+
++ ATDD (Acceptance Test Driven Development)
+  - Different than TDD.
+  - Business Analyst or QA creates an Acceptance Test
+    so that you know when you're done.
+  - Acceptance Tests test the entire system.
+  - Whereas TDD tests just units or modules.
+  - ATDD Tools include Fitness, Cucumber, Selenium
+
++ 3 Places where TDD has an immediate return on investment
+  - When adding new features
+     . Create a test that will pass only once the new feature is written
+     . Then make the test pass
+  - When fixing a bug
+     . Create a test that reproduces the bug and fails.
+     . Update the test so that it will pass once the bug is fixed.
+     . Fix the bug.
+     . Refactor and and do any cleanup.
+     . Rerun the rests to make sure things still pass.
+  - When performing refactorings
+     . Run existing tests and verify the pass.
+     . Look at code coverage and make sure tests cover the code you plan to refactor.
+     . Refactor code.
+     . Rerun tests and verify they run exactly as before.
+     . Commit changes.
+     . Work on new features seperate from refactor.
+
++ TDD Can Help With
+  - Capturing API Requirements: The person who will use your API gets the first pass... your component will meet my needs if this test passes.
+  - Help validate design
+    (A design that isn't testable is a bad design)
+  - We write tests to document how to use our API
+  - Agility and Simplicity: Tests help keep our APIs simple and small and able to evolve.
+  - Coding: Writing tests first help eclipse generate code rapidly and quickly reducing total keystrokes.
+  - Bug Finding
+  - Bug Fixing
+  - Using the Debugger
+  - We write tests to help find what breaks when
+    refactor later
+  - We write tests to figure out where left off work.
+  - We write tests to know when we're done
+  - We write tests to learn other people's code.
+  - We write tests so we can stop being afraid of our code.
+
++ Code Fear: Being afraid of breaking things and changing code is a sign that you don't have enough tests.
+
++ Dependency Injection: Don't call us, we'll call you.
+    Modules are independent and have collaborators passed via setter or constructor.
+    Leads to more modular and testable designs (compared to global variables)
+
++ JUnit deliberately doesn't guarantee the order of tests to encourage tests to be 100% independent.
+   (TestNG actually allows you to declare test order dependencies to facilitate better functional non-unit tests.)
+
++ Technical Debt:  It's the things we know we need to fix later (such as lack of tests or poor design) that we'll pay interest on until we finally fix it.  And ideally we'll pay down technical debt every time we find ourselves paying interest.
++ Think of unfinished refactoring as going into debt. Most companies need some debt in order to function efficiently. However, with debt come interest payments, that is, the extra cost of maintenance and extension caused by overly complex code. You can bear some interest payments, but if the payments become too great, you will be overwhelmed. It is important to manage your debt, paying parts of it off by means of refactoring.
+
+
++ Test Parts:
+  1. Setup Test Fixture
+     a. Data
+     b. Infrastructure
+  2. Test the business logic
+  3. Tear Down
+     a. Verify Results
+     b. Cleanup Resources
+  * We like to have a blank line before and after the core business logic to improve readability.
+
++ Occams Razor: Don't multiple complexity without necessity.
+  aka.  Keep it simple stupid.
+  The simplest solution is often the most agile.
+  This doesn't mean don't think about change, it means think about where that change would be encapsulated.

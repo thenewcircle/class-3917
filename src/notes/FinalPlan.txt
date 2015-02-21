@@ -1,0 +1,31 @@
+Day 3 Plan:
++ Review
+
++ TDD on Simulated Real Project (Demo)
+
++ TDD on YOUR Real Project
+  - Techniques for testing subsystems (multiple units)
+    (How to make it testable.)
+
++ Show InfiniTest to run only tests related to changes.
+http://improvingworks.com/products/infinitest/
+
++ Show test categories and test suites
+https://github.com/junit-team/junit/wiki/Categories
+https://weblogs.java.net/blog/johnsmart/archive/2010/04/25/grouping-tests-using-junit-categories-0
+
++ BDD / Cucumber
+
++ Show Arquillian
+http://arquillian.org/
+http://docs.jboss.org/arquillian/reference/1.0.0.Alpha1/en-US/html_single/#examples.cdi
+https://github.com/arquillian/arquillian-examples
+
+= Questions =
++ Q: Why we write tests... is debugging helpful....
+     I am not convinced this helps hunt for the bug...
++ Q: Is powermock a panacea for testing untestable code.
+   A: No, this is a hard problem.  PowerMock helps digest it slowly.
++ Q: What's the answer to Doug's spring issue yesterday
+
+

@@ -1,0 +1,54 @@
+
+
+public EJB {
+  DistributionEngine e = mainConfig.getDistributionEngine();
+}
+
+public class TestCode {
+  @Test
+  public void testDistributionEngine() {
+     //2. Assemble
+     DistributionEngine engine = TestConfiguration.createRealEngineWithMockedServices();
+     //3. Act
+     engine.doStuff();
+  }
+}
+
+public class TestConfiguration {
+   public static DistributionEngine createRealEngineWithMockedSservices() {
+     CustomerService customerService = Mockito.mock(CustomerService.class);
+     DistributionEngine engine = new DistributionEngine();
+     engine.setCustomerService(customerService);
+   }
+}
+
+
+public class DistributionEngine {
+   @Autowired
+   private CustomerService customerService;
+}
+
+public class CustomerService {
+   @Autowired
+   private DataSource datasource;
+}
+
+
+public class MainConfig {
+  public MainConfig() {
+     distributionEngine = new DistributionEngine();
+     distributionEngine.setCustomerService(DataLayerConfig.getCustomerSerice())
+  }
+  public DistributionEngine getDistributionEngine();
+
+}
+
+public class DataLayerConfig {
+   private DataSource regionalDS;
+   private CustomerService;
+   public DataLayerConfig() {
+      regionalDS = jndiLookup();
+      customerService = new CustomerService();
+      customerService.setDataSource(regionalDS);
+   }
+}

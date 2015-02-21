@@ -1,0 +1,174 @@
+Review:
+
+= TDD =
++ Can save you time while you code (wow!)
++ Can save you time later when you go back to the code and have to do changes.
++ Red/Green Cycle: You switch between testing and coding many times an hour.
++ TDD: You write 1 tests, make it pass.  Write another test, make it pass.
++ When you spot new tests you should write, make a "place holder" test
+  that calls "Assert.fail()" to remind you to write that test.
++ Tip: Put Test cases in the same package (but in /src/test/java)
+    as the object under test.  This way you access package scoped
+    functions and variables.
+
+
+= Dependency Injection =
++ Hollywood Princple: "Don't call us, we'll call you."
++ Rather than going ConfigurationService.getCustomerService();
+  Instead I have: new DistributionEngine(customerService)
++ Dependeny Injection makes it possible for each test ("main")
+  to wire it's own variation of the system unique to the test case
+  at hand.  I can wire a object to mocks, for example.
++ Constructor Injection:
+  public class DistributionEngine {
+    private final CustomerService customerService;
+    public DistributionEngine(CustomerService customerService) {
+       this.customerService = customerService;
+    }
+  }
+  public static void main(String[] args) {
+    CustomerService customerService = new CustomerService(regionalDS);
+    DistributionEngine engine = new DistributionEngine(customerService);
+  }
++ Setter Injection:
+  public class DistributionEngine {
+    private CustomerService customerService;
+    public void setCustomerService (CustomerService customerService) {
+       this.customerService = customerService;
+    }
+  }
+  public static void main(String[] args) {
+    CustomerService customerService = new CustomerService();
+    customerService.setDataSource(regionalDS);
+    DistributionEngine engine = new DistributionEngine();
+    engine.setCustomerService(customerService);
+  }
++ Field Injection:
+  public class DistributionEngine {
+    @Autowired
+    private CustomerService customerService;
+  }
+  public static void main(String[] args) {
+    CustomerService customerService = new CustomerService();
+    SpringReflectionUtils.setField(customerService, "dataSource", dataSource);
+    DistributionEngine engine = new DistributionEngine();
+    SpringReflectionUtils.setField(engine, "customerService", customerService);
+  }
+
+
+= Spring =
++ Spring can do dependency injection in cool ways.
+  <beans>
+    <bean id="myAccountDAO" class="com.example.banking.InMemoryDataSource"/>
+    <bean id="bankingService" class="com.example.banking.SimpleBankingService">
+       <constructor-arg ref="accountDAO"/>
+       <property name="accountDAO" ref="myAccountDAO"/>
+    </bean>
+  </beans>
++ Spring can also to "Autowiring" where it's annotation driven
+    or rule driven.
+
+
+= Refactoring=
++ Refactoring (noun): a change made to the internal structure of software to make it easier to understand and cheaper to modify **without changing its observable behavior**.
++ All tests should continue to pass after a refactoring,
+  with only possibly minimal updates (in case the API names were renamed.)
++ Rule of 3:
+  - First time you do something, just do it.
+  - Second time you do something, wince at the duplication,
+      but do the duplicate thing anyway.
+  - Third time you do the same thing, refactor.
+    (Because now, you have a pattern.)
+  * 2 does not a pattern make.
+  * Rule of Three:  Three strikes and you refactor.
++ 2 Hats:
+    + When you go to add a feature/fix a bug, you notice 
+      "This would be so much cleaner, if I only restructed the code
+       in this other way"
+    + Switch hats to refactorer, refactor, pass all existing tests, commit.
+    + Switch hats back to developer, add a new test, then add the feature.
+    + Try to never refactor and add features in the same svn commit.
++ You generally should avoid refactoring is when you are close to a deadline. At that point the productivity gain from refactoring would appear after the deadline and thus be too late.
+
+= Unit Tests =
++ Write unit tests based on small chunks of code.
++ Unit: "The smallest thing I can test."
++ It's more important for a unit test to be readable than for you to avoid
+  duplicate code.  (Of course, there reaches a point where refactoring might
+  still be needed if you have TONS of duplicate code.)
+
+= Mockito =
++ We mock the parts of the system we "don't want to test" in order to
+  isolate the parts of the system we want to test.
++ So we have a Mock object for things not tested.
+  And we have an "Object Under Test" aka OUT.
++ We "train" the mock object on how to behave when we create the mock.
++ We can "verify" the interactions after at the end of the test.
++ Example: 
+    AccountDAO dao = Mockito.mock(AccountDAO.class);
+    Mockito.when(dao.find(1)).thenReturn(account1);
+    Mockito.when(dao.find(2)).thenReturn(account2);
+    BankingService objectToTest = new SimpleBankingService(dao);
+    dao.transfer(1, 2, 10.00);
+    Assert.assertEquals(0.00, account1.getBalance());
+    Assert.assertEquals(10.00, account2.getBalance());
+    Mockito.verify(dao).update(account1);
+    Mockito.verify(dao).update(account2);
+
+= PowerMock = 
++ Lets you mock static methods and final methods.
++ It does this by replacing the classloader.
++ Example:
+  @RunWith(PowerMockRunner.class)
+  public class BankingTest {
+     @Test
+     @PrepareForTest(ConfigurationService.class)
+     public void testTransfer() {
+        //...
+        PowerMockito.mockStatic(ConfigurationService.class);
+        Mockito.when(ConfigurationService.getAccountDAO()).thenReturn(dao);
+        //...
+     }
+  }
+
+
+= Hard to Test Code =
++ "Big Units"
++ Dependencies between modules (strong coupling)
++ Static Global Variables
++ Poorly defined APIs (such as message formats or JSON)
++ Code not yet written (undefined interfaces)
++ 5000 line functions
+
+
++ Legacy Code Techniques and Tools:
+  - Mock Objects
+  - Power Mock
+  - Network or API Level Record and Replay
+  - Cucumber+Selenium to Drive UI Integration/Functional Tests
+  - JUnit to drive API level Integration Tests
+  - Extracting functions from larger functions and just unit testing parts.
+  - Code Coverage and Highlighting
+  - Agitar
+  - Quick Test Pro
+  - JTest
+  - TPTP Recorder
+  - Eclemma
+  - Infinitest
+
+= Questions =
++ Q: Why we write tests... is debugging helpful....
+     I am not convinced this helps hunt for the bug...
++ Q: Is powermock a panacea for testing untestable code.
+   A: No, this is a hard problem.  PowerMock helps digest it slowly.
++ Q: What's the answer to Doug's spring issue yesterday
+
+
+
+Requests:
++ BDD / Cucumber
++ How to categorize tests.  Run suites of tests.
++ Techniques for testing subsystems (multiple units)
+  (How to make it testable.)
+
+

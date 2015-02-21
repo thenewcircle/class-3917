@@ -1,0 +1,20 @@
+What do you know about TDD
++ Write the test first...
++ Test as as you... along the way....
+
+
+Why should we write tests
++ Verify our code actually works
++ Verify our code does what was intended. (Quality)
++ Repeatable so we discover when we reintroduce bugs later (regression)
++ Finding Bugs so End Users Are Happy (Quality)
+
+
+Why don't we write tests
++ Bad habits
++ Laziness
++ Time Pressure
++ It's hard to go back and add tests later
++ We have a QA team to find bugs....
++ Job Security
+
