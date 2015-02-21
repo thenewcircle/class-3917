@@ -1,0 +1,36 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:jee="http://www.springframework.org/schema/jee"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+ 					 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+					 http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+ 
+	<context:annotation-config/>
+	<context:component-scan base-package="com.example.di" /> 
+ 
+	<bean id="globalDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<qualifier value="global"/>
+		<property name="driverClassName" value="java.sql.Driver" />
+        <property name="url" value="jdbc:mysql://localhost/global-db"/>
+        <property name="username" value="some-username"/>
+        <property name="password" value="some-password"/>
+	</bean>
+	
+    <bean id="regionalDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<qualifier value="regional"/>
+		<property name="driverClassName" value="java.sql.Driver" />
+        <property name="url" value="jdbc:mysql://localhost/regional-db"/>
+        <property name="username" value="some-username"/>
+        <property name="password" value="some-password"/>
+    </bean>
+ 
+ 	<bean class="com.example.pacman.fancy.CustomerService"/>
+	<bean class="com.example.pacman.fancy.NetworkAddrService"/>
+	<bean class="com.example.pacman.fancy.SecurityService"/>
+	<bean class="com.example.pacman.fancy.DistributionEngine"/>
+	<bean class="com.example.pacman.fancy.MyValidator"/>
+	<bean class="com.example.pacman.fancy.MyStatelessWorkerBean"/>
+	<bean class="com.example.pacman.fancy.RequestMessageLogService"/>
+
+</beans>
