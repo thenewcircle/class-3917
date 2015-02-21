@@ -3,9 +3,13 @@ package com.example.banking;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runners.MethodSorters;
 
+import com.example.junit.BankingCategory;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@Category(BankingCategory.class)
 public class BankingTest {
 
 	private static final double ERROR_TOL = 0.00_001;

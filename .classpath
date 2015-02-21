@@ -7,5 +7,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/PowerMock"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaEE"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/TestNG"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
