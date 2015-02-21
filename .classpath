@@ -8,5 +8,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaEE"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/TestNG"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Cucumber"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Selenium"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
